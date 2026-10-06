@@ -1,0 +1,245 @@
+// assignment: exam-1
+// student: Hasan AlFawal
+// downloaded: 10/5/2026, 8:04:39 PM
+
+// ===== Problem 1: Hallway Lights (5/5 worlds matched at last run) =====
+function problem_1() {
+function turnRight(k) {
+  k.turnLeft();
+  k.turnLeft();
+  k.turnLeft();
+}
+
+function turnAround(k) {
+  k.turnLeft();
+  k.turnLeft();
+}
+
+function turnEast(k) {
+  while (k.facingEast() == false) {
+    k.turnLeft();
+  }
+}
+
+function nextline(k){
+if (k.facingEast() && k.leftIsClear()){
+  k.turnLeft();
+  k.move();
+  k.turnLeft();
+  }else if (k.facingWest()&&k.rightIsClear()){
+    turnRight(k);
+    k.move();
+    turnRight(k);
+  }
+}
+function moveforward(k) {
+  while (k.frontIsClear()) {
+    k.move();
+  }
+}
+
+function pickFix(k) {
+  if (k.beepersPresent()) {
+    k.pickBeeper();
+  }
+  if (k.cornerColorIs("Red")) {
+    k.paintCorner("Yellow");
+  }
+}
+
+
+function main(k) {
+  for (let i = 0; i < 8; i++) {
+    while (k.frontIsClear()){
+      pickFix(k);
+      k.move();
+      }
+     pickFix(k);
+     nextline(k);
+    }
+
+   if (k.beepersInBag()){
+    k.putBeeper();
+   }
+ }
+  return main;
+}
+// ===== end Problem 1 =====
+
+// ===== Problem 2: Sorting Stones (5/6 worlds matched at last run) =====
+function problem_2() {
+function turnRight(k) {
+  k.turnLeft();
+  k.turnLeft();
+  k.turnLeft();
+}
+
+function turnAround(k) {
+  k.turnLeft();
+  k.turnLeft();
+}
+
+function turnEast(k) {
+  while (k.facingEast() == false) {
+    k.turnLeft();
+  }
+}
+
+function turnWest(k) {
+  while (k.facingWest() == false) {
+    k.turnLeft();
+  }
+}
+
+function turnNorth(k) {
+  while (k.facingNorth() == false) {
+    k.turnLeft();
+  }
+}
+
+function turnSouth(k) {
+  while (k.facingSouth() == false) {
+    k.turnLeft();
+  }
+}
+
+function nextColumn(k) {
+  turnRight(k);
+  k.move();
+  k.move();
+  k.turnLeft();
+}
+
+function stackStones(k, stoneCount) {
+  turnNorth(k);
+  k.move();
+  
+  while (k.beepersPresent()) {
+    k.move();
+  }
+  
+  for (let i = 0; i < stoneCount; i++) {
+    k.putBeeper();
+    k.move();
+  }
+  
+  turnSouth(k);
+  while (k.frontIsClear()) {
+    k.move();
+  }
+  turnNorth(k);
+}
+
+function main(k) {
+  let redStone = 0;
+  let greenStone = 0;
+  let blueStone = 0;
+
+  k.move();
+
+  let checkingRows = true;
+  while (checkingRows == true) {
+    while (k.beepersPresent()) {
+      if (k.cornerColorIs("Red")) {
+        redStone++;
+        k.pickBeeper();
+      } else if (k.cornerColorIs("Green")) {
+        greenStone++;
+        k.pickBeeper();
+      } else if (k.cornerColorIs("Blue")) {
+        blueStone++;
+        k.pickBeeper();
+      }
+    }
+
+    if (k.frontIsClear() == false) {
+      checkingRows = false;
+    } else {
+      k.move();
+    }
+  }
+
+  turnSouth(k);
+  while (k.frontIsClear()) {
+    k.move();
+  }
+
+  turnEast(k);
+  k.move();
+  k.move();
+
+  stackStones(k, redStone);
+  
+  nextColumn(k);
+  stackStones(k, greenStone);
+  
+  nextColumn(k);
+  stackStones(k, blueStone);
+}
+  return main;
+}
+// ===== end Problem 2 =====
+
+// ===== Problem 3: Treasure Map (not run since last edit) =====
+function problem_3() {
+function turnRight(k) {
+  k.turnLeft();
+  k.turnLeft();
+  k.turnLeft();
+}
+
+function turnAround(k) {
+  k.turnLeft();
+  k.turnLeft();
+}
+
+function turnNorth(k) {
+  while (k.facingNorth() == false) {
+    k.turnLeft();
+  }
+}
+
+function turnSouth(k) {
+  while (k.facingSouth() == false) {
+    k.turnLeft();
+  }
+}
+
+function turnEast(k) {
+  while (k.facingEast() == false) {
+    k.turnLeft();
+  }
+}
+
+function turnWest(k) {
+  while (k.facingWest() == false) {
+    k.turnLeft();
+  }
+}
+
+function MeasurePile(k){
+  let pile = 0;
+  while (k.beepersPresent()) {
+    k.pickBeeper();
+    count++;
+  }
+  return count;
+}
+function determineColor(Avenue, Street) {
+  let colorName = "";
+  if (Avenue > Street) {
+    colorName = "Red";
+  } else if (Street > Avenue) {
+    colorName = "Blue";
+  } else {
+    colorName = "Green";
+  }
+  return colorName;
+}
+
+function main(k) {
+  //Did not have time to finish :\
+}
+  return main;
+}
+// ===== end Problem 3 =====
