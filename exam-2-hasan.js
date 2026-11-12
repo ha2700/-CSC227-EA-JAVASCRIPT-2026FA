@@ -133,3 +133,48 @@ if (newcolor){
   return main;
 }
 // ===== end Problem 2 =====
+// exam: exam-2
+// title: Exam 2 · The DOM
+// Copied from the exam page. Keep these header lines and the ===== markers.
+
+// ===== problem 3: thickestBorder =====
+// Match the thickest border (33 pts) — passed in browser
+function parseWidth(borderWidth) {
+  return parseFloat(borderWidth);
+}
+const boxes = document.querySelectorAll("#boxes div");
+
+const box1 = document.getElementById("box1");
+const box2 = document.getElementById("box2");
+const box3 = document.getElementById("box3");
+const box4 = document.getElementById("box4");
+const box5 = document.getElementById("box5");
+
+const width1 = parseWidth(box1.style.border);
+const width2 = parseWidth(box2.style.border);
+const width3 = parseWidth(box3.style.border);
+const width4 = parseWidth(box4.style.border);
+const width5 = parseWidth(box5.style.border);
+
+let thickest = width1;
+if (width2 > thickest) {
+  thickest = width2;
+}
+if (width3 > thickest) {
+  thickest = width3;
+}
+if (width4 > thickest) {
+  thickest = width4;
+}
+if (width5 > thickest) {
+  thickest = width5;
+}
+ 
+
+box1.style.borderWidth = thickest + "px";
+box2.style.borderWidth = thickest + "px";
+box3.style.borderWidth = thickest + "px";
+box4.style.borderWidth = thickest + "px";
+box5.style.borderWidth = thickest + "px";
+// ===== end problem 3 =====
+
