@@ -2,6 +2,7 @@
 // student: Hasan AlFawal
 // downloaded: 11/9/2026, 7:56:43 PM
 
+
 // ===== Problem 1: Word Swap (not run since last edit) =====
 function problem_1() {
 // The letter code: a pile of n beepers stands for LETTERS[n].
